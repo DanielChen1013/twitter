@@ -12,7 +12,15 @@ router.get('/users/:name', function(req,res) {
 	var name = req.params.name;
 	var userData = tweetBank.find({name: name});
 	console.log(userData);
-	res.render('index', {title: "Your Twitter Feed", name: name, tweets: userData});
+	res.render('index', {title: name + "'s' Twitter Feed", tweets: userData});
+})
+
+router.get('/users/:name/tweets/:id', function(req,res) {
+	var name = req.params.name;
+	var id = req.params.id;
+	var userData = tweetBank.find({name: name, id: name + id});
+	console.log(userData);
+	res.render('index', {title: name + "'s' Twitter Feed", tweets: userData}); //add something here
 })
 
 module.exports = router;
