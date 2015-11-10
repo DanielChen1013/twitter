@@ -4,8 +4,9 @@
 var express = require( 'express' ),
 	swig = require('swig');
 var app = express(); // creates an instance of an express application
-
+var mime = require('mime');
 var tweetBank = require("./tweetBank")
+var fs = require('fs');
 
 var routes = require('./routes');
 app.use("/", routes)
@@ -15,8 +16,18 @@ swig.setDefaults({
 
 app.use(function(req, res, next){
 	console.log(req.method + " " + req.path + " " + res.statusCode); //log the middleware, order counts, must come first
-	
 	next();
+})
+
+// static file middleware
+app.use(function(req, res, next) {
+  console.log(req.path)
+  var mimeType = mime.lookup(req.path)
+  fs.readFile('./public/' + req.path, function(err, fileBuffer) {
+    if(err) return next()
+    res.header('Content-Type', mimeType)
+    res.send(fileBuffer)
+  })
 })
 
 app.engine('html', swig.renderFile);

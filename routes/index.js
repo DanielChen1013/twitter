@@ -9,3 +9,9 @@ router.get('/', function (req, res) {
 });
 
 module.exports = router;
+
+// request.path to get route
+// if (__dirName + request.path)
+// 		response.sendFile 
+// else next();
+
