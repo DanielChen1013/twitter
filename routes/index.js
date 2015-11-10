@@ -5,8 +5,15 @@ var tweetBank = require('../tweetBank');
 
 router.get('/', function (req, res) {
   var tweets = tweetBank.list();
-  res.render( 'index', { title: 'Twitter.js', tweets: tweets } );
+  res.render( 'index', { title: 'Twitter', name: 'Nimit', tweets: tweets } );
 });
+
+router.get('/users/:name', function(req,res) {
+	var name = req.params.name;
+	var userData = tweetBank.find({name: name});
+	console.log(userData);
+	res.render('index', {title: "Your Twitter Feed", name: name, tweets: userData});
+})
 
 module.exports = router;
 

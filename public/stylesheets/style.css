@@ -57,3 +57,19 @@ code {
 .content .by {
   font-weight: bold;
 }
+.tweetHandle {
+  font-weight: bold;
+  font-size: 28px;
+
+  }
+.tweets {
+  font-weight: normal;
+  font-size: 20px;
+  list-style: none;
+}
+.retweet {
+  font-weight: normal;
+  font-size: 16px;
+  margin: 8px auto;
+  list-style: none;
+}
