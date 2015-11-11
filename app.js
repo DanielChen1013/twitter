@@ -19,6 +19,10 @@ app.use(function(req, res, next){
 	next();
 })
 
+app.post(function(req,res,next){
+
+})
+
 // static file middleware
 app.use(function(req, res, next) {
   console.log(req.path)
@@ -28,7 +32,7 @@ app.use(function(req, res, next) {
     res.header('Content-Type', mimeType)
     res.send(fileBuffer)
   })
-})
+}) 	
 
 app.engine('html', swig.renderFile);
 

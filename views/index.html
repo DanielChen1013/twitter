@@ -14,6 +14,19 @@
   <div class="page-header">
     <h1>Welcome to {{ title }} {{ name }}!</h1>
   </div>
+
+   {% if showForm %}
+        <form action="/submit" method="POST">
+          <label for="name_field">Name:</label>
+          <input name="name" type="text" id="name_field" />
+
+          <label for="text_field">Text:</label>
+          <input name="text" type="text" id="text_field" style="width: 350px;" />
+
+          <input type="submit" value="Submit" />
+        </form>
+      {% endif %}
+
   <div class="row">
     <div class="col-md-3">
       <img src="https://pbs.twimg.com/profile_images/2450268678/olxp11gnt09no2y2wpsh_normal.jpeg"><br>
@@ -28,7 +41,7 @@
  <li class='tweets'> {{tweet.text}} </li>
  -->       
         <li class='tweets'><a href="/users/{{tweet.name}}">{{tweet.name}}</a> - {{tweet.text}}</li>
-        <li class="retweet"><a href="www.twitter.com">Re-Tweet</a></li>
+        <li class="retweet"><a href="www.twitter.com">Re-Tweet</a></li> <li class="tweetID"><a href="/users/{{tweet.name}}/tweets/{{tweet.id}}">View</a></li>
 
       {% endfor %}
       

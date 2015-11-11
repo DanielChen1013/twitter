@@ -73,3 +73,8 @@ code {
   margin: 8px auto;
   list-style: none;
 }
+.tweetID {
+  font-weight: normal;
+  font-size: 16px;
+  list-style: none;
+}
